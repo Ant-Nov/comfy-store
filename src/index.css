@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@plugin "daisyui" {
+  themes: lemonade, coffee;
+}
+
+@layer components {
+  .centered-content {
+    /* Use @apply to inline Tailwind utility classes */
+    @apply mx-auto max-w-6xl px-8!;
+  }
+}
