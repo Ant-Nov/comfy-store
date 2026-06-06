@@ -12,8 +12,6 @@ export const PaginationContainer = () => {
     )
     .filter(item => !!item);
 
-    console.log('pages: ', pages);
-
   const navigate = useNavigate();
   const location = useLocation();
 

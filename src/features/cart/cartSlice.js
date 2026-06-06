@@ -11,8 +11,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     clearCart: state => {
-      console.log('clearCart');
-
       return initialState;
     },
     addItem: (state, { payload }) => {
