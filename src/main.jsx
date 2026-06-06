@@ -7,11 +7,24 @@ import { store } from './store.js';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <ToastContainer position='top-center' autoClose={3000} />
-      <App />
-    </Provider>
-  </StrictMode>,
-);
+async function enableMocking() {
+  console.log('import.meta.env.DEV', import.meta.env.DEV);
+
+  if (import.meta.env.DEV) {
+    const { worker } = await import('./mocks/browser');
+    return worker.start({ serviceWorker: { url: `${import.meta.env.BASE_URL}mockServiceWorker.js` } });
+  }
+
+  return;
+}
+
+enableMocking().then(() => {
+  createRoot(document.getElementById('root')).render(
+    <StrictMode>
+      <Provider store={store}>
+        <ToastContainer position='top-center' autoClose={3000} />
+        <App />
+      </Provider>
+    </StrictMode>,
+  );
+});

@@ -8,7 +8,6 @@ import { selectCartTotals } from '../features/cart/cartSelectors';
 
 
 export const Navbar = () => {
-  const isLoggedIn = false;
   const { numItemsInCart } = useSelector(selectCartTotals);
 
   return (

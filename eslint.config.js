@@ -14,4 +14,8 @@ export default defineConfig([
       "no-undef": "error",
     }
   },
+  {
+    files: ["**/*.test.{js,jsx}"],
+    languageOptions: { globals: { ...globals.browser, ...globals.vitest } },
+  },
 ]);
